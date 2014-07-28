@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   constraints Monban::Constraints::SignedOut.new do
-    root "users#new", as: :sign_in
+    root "users#new", as: :sign_up
     resource :session, only: [:new, :create]
     resources :users, only: [:new, :create]
   end
