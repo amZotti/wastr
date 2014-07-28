@@ -1,0 +1,2 @@
+# Wastr
+Reddit clone
