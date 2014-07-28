@@ -10,13 +10,12 @@ Rails.application.routes.draw do
     end
     resources :posts, only: [:new, :create, :index]
     resources :categories, only: [:new, :create, :show, :edit, :update, :destroy]
+    resource :upvote, only: [ :update ]
+    resource :downvote, only: [ :update ]
   end
-
   constraints Monban::Constraints::SignedOut.new do
     root "users#new", as: :sign_up
     resource :session, only: [:new, :create]
     resources :users, only: [:new, :create]
   end
-
-  resources :posts, only: [:index, :show]
 end

@@ -1,5 +1,8 @@
 <div>
   <b>Title: </b><%= link_to post.title, post %>
+  <%= button_to "Upvote", [post, :upvote], method: :patch %>
+  <%= button_to "Downvote", [post, :downvote], method: :patch %>
+  <p>Votes: <%= post.votes %></p>
 </div>
 <div>
   <b>Body</b>
