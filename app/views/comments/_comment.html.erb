@@ -1,6 +1,6 @@
 <li>
   <div>
-    Posted by: <%= comment.user.email %>
+    Posted by: <%= comment.email %>
     <div><%= comment.body %></div>
     <div>
       <%= form_for [comment, @reply], url: [comment, :replies] do |form| %>
