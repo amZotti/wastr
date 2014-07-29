@@ -8,6 +8,16 @@
     <%= form.text_area :body %>
   </div>
   <div>
+    <%= form.label :post_categories %>
+    <%= form.collection_select(
+      :id,
+      @categories,
+      :id,
+      :name,
+      include_blank: "choose"
+    ) %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

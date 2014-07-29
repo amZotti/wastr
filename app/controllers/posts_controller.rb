@@ -5,10 +5,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   def create
-    post = current_user.posts.create(post_params)
+    @category = Category.find(post_params[:category_id])
+    post = current_user.posts.create(post_params).merge(category_id: @gategory.id)
     redirect_to root_path
   end
 
@@ -23,6 +25,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(
       :title,
       :body,
+      :id,
     )
   end
 end
