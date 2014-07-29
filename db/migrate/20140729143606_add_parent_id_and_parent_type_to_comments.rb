@@ -5,5 +5,4 @@ class AddParentIdAndParentTypeToComments < ActiveRecord::Migration
     add_index :comments, :parent_id
     add_index :comments, :parent_type
   end
-
 end
