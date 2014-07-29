@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-
   def new
     @category = Category.new
   end
@@ -28,6 +27,16 @@ class CategoriesController < ApplicationController
       else
         render :edit
       end
+    else
+      redirect_to :posts
+    end
+  end
+
+  def destroy
+    category = Category.find(params[:id])
+    if current_user.allowed_to_modify_category?(category)
+      category.destroy
+      redirect_to :posts
     else
       redirect_to :posts
     end
