@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
   def create
-    comment = current_user.comments.create(comment_params)
-    redirect_to comment.post
+    post = Post.find(params[:post_id])
+    comment = post.replies.create(comment_params)
+    redirect_to post
   end
 
   private
@@ -9,6 +10,11 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(
       :body,
-    ).merge(post_id: params[:post_id])
+      :parent_id,
+      :parent_type,
+    ).merge(
+        user_id: current_user.id,
+        post_id: params[:post_id]
+      )
   end
 end

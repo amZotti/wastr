@@ -1,3 +1,14 @@
-Posted by: <%= comment.user.email %>
-<div><%= comment.body %></div>
-<div><%= render comment.replies %></div>
+<li>
+  <div>
+    Posted by: <%= comment.user.email %>
+    <div><%= comment.body %></div>
+    <div>
+      <%= form_for [comment, @reply], url: [comment, :replies] do |form| %>
+        <div><%= form.label :body, "reply to this comment: " %></div>
+        <div><%= form.text_area :body %></div>
+        <div><%= form.submit "reply" %></div>
+      <% end %>
+    </div>
+    <div><ul><%= render comment.replies %></ul></div>
+  </div>
+</li>
