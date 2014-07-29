@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       :body,
     ).merge(
         user_id: current_user.id,
-        post_id: params[:post_id]
+        post_id: params[:post_id],
       )
   end
 end
