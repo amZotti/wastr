@@ -1,0 +1,25 @@
+<%= form_for [@category] do |form| %>
+  <%= render "error_messages", target: @category %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :intro %>
+    <%= form.text_field :intro %>
+  </div>
+  <div>
+    <%= form.label :message %>
+    <%= form.text_field :message %>
+  </div>
+    <%= form.submit %>
+  </div>
+<% end %>

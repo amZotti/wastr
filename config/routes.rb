@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   constraints Monban::Constraints::SignedIn.new do
     root "posts#index"
     resource :session, only: [:destroy]
-    resources :posts, only: [:new, :create] do
+    resources :posts, only: [:new, :create, :index] do
       resources :comments, only: [:create]
     end
+    resources :categories, only: [:new, :create, :show, :edit, :update]
   end
 
   constraints Monban::Constraints::SignedOut.new do

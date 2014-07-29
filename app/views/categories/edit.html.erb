@@ -1,0 +1,22 @@
+<h2>Current Category</h2>
+<div>
+  <%= @category.name %>
+</div>
+<div>
+  <%= @category.title %>
+</div>
+<div>
+  <%= @category.description %>
+</div>
+<div>
+  <%= @category.intro %>
+</div>
+<div>
+  <%= @category.message %>
+</div>
+
+<% if signed_in? %>
+  <h3>Edit Category</h3>
+  <div><%= render "edit_category" %></div>
+  <%= button_to "Delete category", @category, method: :delete %>
+<% end %>

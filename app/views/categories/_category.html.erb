@@ -1,0 +1,14 @@
+<h2>Category: <%= category.name %></h2>
+<div>
+  <strong>Title:</strong> <%= category.title %>
+</div>
+<div>
+  <strong>Description:</strong> <%= category.description %>
+</div>
+<div>
+  <strong>Message for users:</strong> <%= category.message%>
+</div>
+<div>
+  <strong>Intro text:</strong <%= category.intro %>
+</div>
+<%= button_to "Edit category", [:edit, :category], method: :get %>

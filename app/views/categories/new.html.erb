@@ -1,0 +1,24 @@
+<h2>Add a New Category</h2>
+<%= form_for @category do |form| %>
+  <h3>Enter a name for this category</h3>
+  Make it short, and no spaces!
+  <div><%= form.text_field :name %></div>
+
+  <h3>Category title</h3>
+  for example: Time waster, the place to waste
+  <div><%= form.text_field :title %></div>
+
+  <h3>Description</h3>
+  What is this category about? 500 characters max.
+  <div><%= form.text_area :description %></div>
+
+  <h3>Messages to Users</h3>
+  Shown at the side, great for instructions, ettiquette info, etc.
+  <div><%= form.text_area :message %></div>
+
+  <h3>Intro Text</h3>
+  Instructions to help other users know what kinds of posts they can/should make in this category.
+  <div><%= form.text_area :intro %></div>
+
+  <%= form.submit %>
+<% end %>
