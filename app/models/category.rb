@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :title, presence: true
   validates :description, presence: true, length: { maximum: 500 }
   validates :message, presence: true, length: { maximum: 500 }

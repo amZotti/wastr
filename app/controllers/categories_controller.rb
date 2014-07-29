@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-
   def new
     @category = Category.new
   end
@@ -14,7 +13,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    @category = Category.categories.find(params[:id])
     if ! current_user.allowed_to_modify_category?(@category)
       redirect_to :posts
     end
