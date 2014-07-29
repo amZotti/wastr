@@ -8,7 +8,7 @@ class CreateCategories < ActiveRecord::Migration
       t.text :intro, null: false
       t.integer :user_id, null: false
 
-      t.timestamps 
+      t.timestamps null: false
     end
     add_index :categories, :name, unique: true
     add_index :categories, :user_id
