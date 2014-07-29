@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140728195823) do
 
   create_table "votes", force: true do |t|
     t.integer  "user_id",                null: false
-    t.integer  "polarity",   default: 0, null: false
+    t.integer  "value",      default: 0, null: false
     t.integer  "post_id",                null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

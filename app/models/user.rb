@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :categories
-  has_many :votes
   
   def allowed_to_modify_category?(category)
     category_owner?(category)

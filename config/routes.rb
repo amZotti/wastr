@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     resource :session, only: [:destroy]
     resources :posts, only: [:new, :create, :index] do
       resources :comments, only: [:create]
-      resource :upvote, only: [ :create ]
-      resource :downvote, only: [ :create ]
+      resource :upvote, only: [:create]
+      resource :downvote, only: [:create]
     end
     resources :categories, only: [:new, :create, :show, :edit, :update, :destroy]
   end
