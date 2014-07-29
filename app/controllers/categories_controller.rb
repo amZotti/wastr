@@ -33,6 +33,16 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    category = Category.find(params[:id])
+    if current_user.allowed_to_modify_category?(category)
+      category.destroy
+      redirect_to :posts
+    else
+      redirect_to :posts
+    end
+  end
+
   private
 
   def category_params

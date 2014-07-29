@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create, :index] do
       resources :comments, only: [:create]
     end
-    resources :categories, only: [:new, :create, :show, :edit, :update]
+    resources :posts, only: [:new, :create, :index]
+    resources :categories, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 
   constraints Monban::Constraints::SignedOut.new do
