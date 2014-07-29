@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       resource :upvote, only: [:create]
       resource :downvote, only: [:create]
     end
+    resources :comments, only: [] do
+      resources :replies, only: [:create]
+    end
     resources :categories, only: [:new, :create, :show, :edit, :update, :destroy]
   end
   constraints Monban::Constraints::SignedOut.new do
