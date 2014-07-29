@@ -4,11 +4,11 @@ class Post < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :replies, as: :parent, class_name: "Comment"
 
+  validates :user, presence: true
   validates :title, presence: true
   validates :body, presence: true
 
   def score
-    votes.sum("value") 
+    votes.sum("value")
   end
->>>>>>> Make comments on posts polymorphic
 end
