@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
   belongs_to :user
-  has_many :posts, through: :post_categories, source: :category
+  has_many :posts
 
   validates :name, presence: true, uniqueness: true
   validates :title, presence: true
