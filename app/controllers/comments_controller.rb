@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     parent = find_parent
     comment = current_user.comments.create(comment_params.merge(parent: parent, post: parent.post))
-    redirect_to polymorphic_path(parent.post, anchor_item: comment.id)
+    redirect_to polymorphic_path(parent.post, anchor: "comment_#{comment.id}")
   end
 
   def show
