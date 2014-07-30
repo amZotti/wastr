@@ -8,9 +8,9 @@
     <%= form.text_area :body %>
   </div>
   <div>
-    <%= form.label :post_categories %>
+    <%= form.label "Choose a Category" %>
     <%= form.collection_select(
-      :id,
+      :category_id,
       @categories,
       :id,
       :name,

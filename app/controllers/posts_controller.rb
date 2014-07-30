@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+    @categories = Category.all
   end
 
   def new
@@ -9,14 +10,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    @category = Category.find(post_params[:category_id])
-    post = current_user.posts.create(post_params).merge(category_id: @gategory.id)
+    post = current_user.posts.create(post_params)
     redirect_to root_path
   end
 
   def show
     @post = Post.find(params[:id])
     @reply = Comment.new
+    @comment = Comment.new
+    @category = Category.find(@post.category_id)
   end
 
   private
@@ -25,7 +27,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(
       :title,
       :body,
-      :id,
+      :category_id,
     )
   end
 end
