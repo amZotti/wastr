@@ -3,14 +3,14 @@
     Posted by: <%= comment.email %> <span><%= link_to "Permalink", [comment.post, comment] %></span>
     <div><%= comment.body %></div>
     <div>
-      <%= form_for [comment, @comment], url: [comment, :comments] do |form| %>
+      <%= form_for [comment, reply], url: [comment, :comments] do |form| %>
         <div><%= form.label :body, "reply to this comment: " %></div>
         <div><%= form.text_area :body %></div>
         <div><%= form.submit "reply" %></div>
       <% end %>
     </div>
     <div>
-      <ul><%= render comment.replies %></ul>
+      <ul><%= render comment.replies, reply: reply %></ul>
     </div>
   </div>
 </li>

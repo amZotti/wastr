@@ -15,4 +15,8 @@ class Post < ActiveRecord::Base
   def post
     self
   end
+
+  def path
+    self
+  end
 end

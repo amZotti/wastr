@@ -2,11 +2,12 @@ class CommentsController < ApplicationController
   def create
     parent = find_parent
     comment = current_user.comments.create(comment_params.merge(parent: parent, post: parent.post))
-    redirect_to parent.post
+    redirect_to parent.path
   end
 
   def show
     @comment = Comment.find(params[:id])
+    @reply = Comment.new
   end
 
   private
