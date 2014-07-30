@@ -1,7 +1,7 @@
 <li>
   <a id="<%= dom_id(comment) %>">
     <div>
-      Posted by: <%= comment.email %> <span><%= link_to "Permalink", [comment.post, comment] %></span>
+      Posted by: <%= link_to comment.email, comment.user %> <span><%= link_to "Permalink", [comment.post, comment] %></span>
       <div><%= comment.body %></div>
       <div>
         <%= form_for [comment, reply], url: [comment, :comments] do |form| %>

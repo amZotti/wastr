@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root "posts#index"
     resource :session, only: [:destroy]
     resources :categories, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :users, only: [:show]
 
     resources :posts, only: [:new, :create, :index, :show] do
       resources :comments, only: [:create]
