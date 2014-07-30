@@ -11,10 +11,11 @@ Rails.application.routes.draw do
       resources :comments, only: [:create]
       resource :upvote, only: [:create]
       resource :downvote, only: [:create]
+      resources :comments, only: [:create, :show]
     end
 
     resources :comments, only: [] do
-      resources :replies, only: [:create]
+      resources :comments, only: [:create]
     end
   end
 

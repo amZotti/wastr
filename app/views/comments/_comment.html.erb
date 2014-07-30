@@ -3,7 +3,7 @@
     Posted by: <%= comment.email %>
     <div><%= comment.body %></div>
     <div>
-      <%= form_for [comment, @comment], url: [comment, :replies] do |form| %>
+      <%= form_for [comment, @comment], url: [comment, :comments] do |form| %>
         <div><%= form.label :body, "reply to this comment: " %></div>
         <div><%= form.text_area :body %></div>
         <div><%= form.submit "reply" %></div>
