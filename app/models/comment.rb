@@ -11,4 +11,8 @@ class Comment < ActiveRecord::Base
   validates :post, presence: true
   validates :body, presence: true
   validates :parent, presence: true
+
+  def self.chronological
+    order(created_at: :desc)
+  end
 end
