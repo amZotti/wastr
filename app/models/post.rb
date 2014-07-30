@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  belongs_to :category
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :replies, as: :parent, class_name: "Comment"
