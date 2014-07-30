@@ -3,11 +3,11 @@
 <h3>Comments</h3>
 
 <div>
-  <%= form_for [@post, @comment], url: [@post, :comments] do |form| %>
+  <%= form_for [@post, @reply], url: [@post, :comments] do |form| %>
     <div><%= form.label :body, "enter your comment:" %></div>
     <div><%= form.text_area :body %></div>
     <div><%= form.submit %></div>
   <% end %>
 </div>
 
-<%= render @post.replies %>
+<%= render @post.replies, reply: @reply %>
