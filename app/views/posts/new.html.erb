@@ -9,13 +9,19 @@
   </div>
   <div>
     <%= form.label "Choose a Category" %>
-    <%= form.collection_select(
-      :category_id,
-      @categories,
-      :id,
-      :title,
-      include_blank: "choose"
-    ) %>
+    <% if @categories.empty? %>
+      <div>
+        <%= link_to " create a category, first", [:new, :category] %>
+      </div>
+    <% else %>
+        <%= form.collection_select(
+          :category_id,
+          @categories,
+          :id,
+          :title,
+          include_blank: "choose"
+        ) %>
+    <% end %>
   </div>
   <div>
     <%= form.submit %>
