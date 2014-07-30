@@ -1,8 +1,8 @@
 <div>
   <b>Title: </b><%= link_to post.title, post %>
-  <%= button_to "Upvote", [post, :upvote] %>
-  <%= button_to "Downvote", [post, :downvote] %>
-  <p>Score: <%= post.score %></p>
+  <%= render "upvote", post: post %>
+  <%= render "downvote", post: post %>
+  <p id="score_<%= post.id %>">Score: <%= post.score %></p>
 </div>
 <div>
   <b>Body:</b> <%= post.body %>

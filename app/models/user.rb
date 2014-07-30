@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
     is_owner?(object)
   end
 
+  def allowed_to_modify_category?(category)
+    category_owner?(category)
+  end
+
   private
 
   def is_owner?(object)
