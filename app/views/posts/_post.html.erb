@@ -3,11 +3,11 @@
   <%= button_to "Upvote", [post, :upvote] %>
   <%= button_to "Downvote", [post, :downvote] %>
   <p>Score: <%= post.score %></p>
+  <b>Title:</b> <%= link_to post.title, post %>
 </div>
 <div>
-  <b>Body</b>
-  <%= post.body %>
+  <b>Body:</b> <%= post.body %>
 </div>
 <div>
-  Posted by <%= post.user.email %>
+  Posted by: <%= post.user.email %>
 </div>
