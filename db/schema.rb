@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728190217) do
+ActiveRecord::Schema.define(version: 20140730181119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,24 +31,30 @@ ActiveRecord::Schema.define(version: 20140728190217) do
   add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "post_id",    null: false
-    t.text     "body",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",     null: false
+    t.integer  "post_id",     null: false
+    t.text     "body",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "parent_id",   null: false
+    t.string   "parent_type", null: false
   end
 
+  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
+  add_index "comments", ["parent_type"], name: "index_comments_on_parent_type", using: :btree
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "title",      null: false
-    t.text     "body",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id",    null: false
+    t.string   "title",       null: false
+    t.text     "body",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id",     null: false
+    t.integer  "category_id", null: false
   end
 
+  add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
@@ -57,5 +63,15 @@ ActiveRecord::Schema.define(version: 20140728190217) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id",                null: false
+    t.integer  "value",      default: 0, null: false
+    t.integer  "post_id",                null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "votes", ["post_id", "user_id"], name: "index_votes_on_post_id_and_user_id", unique: true, using: :btree
 
 end

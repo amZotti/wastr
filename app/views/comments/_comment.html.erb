@@ -1,2 +1,18 @@
-Posted by: <%= comment.user.email %>
-<div><%= comment.body %></div>
+<li>
+  <a id="<%= dom_id(comment) %>">
+    <div>
+      Posted by: <%= comment.email %> <span><%= link_to "Permalink", [comment.post, comment] %></span>
+      <div><%= comment.body %></div>
+      <div>
+        <%= form_for [comment, reply], url: [comment, :comments] do |form| %>
+          <div><%= form.label :body, "reply to this comment: " %></div>
+          <div><%= form.text_area :body %></div>
+          <div><%= form.submit "reply" %></div>
+        <% end %>
+      </div>
+      <div>
+        <ul><%= render comment.replies, reply: reply %></ul>
+      </div>
+    </div>
+  </a>
+</li>
