@@ -11,11 +11,16 @@ class Post < ActiveRecord::Base
   validates :category, presence: true
 
   delegate :email, to: :user
+
   def score
     votes.sum("value")
   end
 
   def post
     self
+  end
+
+  def self.chronological
+    order(created_at: :desc)
   end
 end

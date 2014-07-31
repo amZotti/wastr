@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @comments = @user.comments.chronological
     @reply = Comment.new
+    @posts = @user.posts.chronological
   end
 
   private

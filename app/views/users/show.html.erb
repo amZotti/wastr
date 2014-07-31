@@ -1,3 +1,9 @@
-<%= render "history_nav" %>
-<div><h3><%= @user.email %>'s Comment History</h3></div>
-<%= render @comments, reply: @reply %>
+<div>
+  <div><h3><%= @user.email %>'s Comment History</h3></div>
+  <%= render @comments, reply: @reply %>
+</div>
+
+<div>
+  <div><h3><%= @user.email %>'s Post History</h3></div>
+  <%= render @posts, user: @user %>
+</div>
