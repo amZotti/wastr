@@ -1,1 +1,4 @@
 <%= render @category %>
+<% if current_user.is_owner?(@category) %>
+  <%= link_to "Delete", @category, method: :delete %>
+<% end %>

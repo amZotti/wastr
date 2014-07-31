@@ -14,14 +14,14 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
-    if ! current_user.allowed_to_modify_category?(@category)
+    if ! current_user.allowed_to_modify?(@category)
       redirect_to :posts
     end
   end
 
   def update
     @category = Category.find(params[:id])
-    if current_user.allowed_to_modify_category?(@category)
+    if current_user.allowed_to_modify?(@category)
       if @category.update(category_params)
         redirect_to @category
       else
@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     category = Category.find(params[:id])
-    if current_user.allowed_to_modify_category?(category)
+    if current_user.allowed_to_modify?(category)
       category.destroy
       redirect_to :posts
     else

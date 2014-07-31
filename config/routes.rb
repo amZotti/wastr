@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :users, only: [:show]
 
-    resources :posts, only: [:new, :create] do
+    resources :posts, only: [:new, :create, :index, :show, :destroy] do
       resources :comments, only: [:create]
       resource :upvote, only: [:create]
       resource :downvote, only: [:create]

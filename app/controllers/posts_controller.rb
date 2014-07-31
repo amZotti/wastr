@@ -10,8 +10,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.create(post_params)
-    redirect_to root_path
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -19,6 +23,16 @@ class PostsController < ApplicationController
     @reply = Comment.new
     @comment = Comment.new
     @category = Category.find(@post.category_id)
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    if current_user.allowed_to_modify?(post)
+      post.destroy
+      redirect_to root_path
+    else
+      render :post 
+    end
   end
 
   private
