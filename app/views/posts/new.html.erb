@@ -2,7 +2,7 @@
 <% if @categories.empty? %>
   <div>
     <h3>Before you can create a post you need to create a category.</h3>
-    <%= button_to "Create a category", [:new, :category], method: :get  %>
+    <%= link_to "Create a category", [:new, :category] %>
   </div>
 <% else %>
   <%= form_for @post do |form| %>
