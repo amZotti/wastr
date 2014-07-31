@@ -23,4 +23,12 @@ class Post < ActiveRecord::Base
   def self.chronological
     order(created_at: :desc)
   end
+
+  def self.date_sort
+    chronological
+  end
+
+  def self.vote_sort
+    order(votes: :desc)
+  end
 end
