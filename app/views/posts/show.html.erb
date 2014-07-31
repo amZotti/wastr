@@ -2,7 +2,7 @@
   <%= render @post %>
 </div>
 <div>
-  <% if current_user.is_owner?(@post)  %>
+  <% if current_user.allowed_to_delete?(@post)  %>
     <%= link_to "Delete Post", @post, method: :delete %>
   <% end %>
 </div>
