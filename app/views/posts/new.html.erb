@@ -1,6 +1,7 @@
 <%= form_for @post do |form| %>
+  <%= render "error_messages", target: @post %>
   <div>
-    <%= form.label :title, "Post title: " %>
+    <%= form.label :title, "Post Title: " %>
     <%= form.text_field :title %>
   </div>
   <div>
@@ -8,13 +9,12 @@
     <%= form.text_area :body %>
   </div>
   <div>
-    <%= form.label "Choose a Category" %>
     <%= form.collection_select(
       :category_id,
       @categories,
       :id,
       :title,
-      include_blank: "choose"
+      include_blank: "Choose a Category"
     ) %>
   </div>
   <div>

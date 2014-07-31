@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   validates :user, presence: true
   validates :title, presence: true
   validates :body, presence: true
-  validates :category, presence: true
+  validates :category_id, presence: true
 
   def score
     votes.sum("value")
