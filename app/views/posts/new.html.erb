@@ -9,7 +9,7 @@
     <%= form.text_area :body %>
   </div>
   <div>
-    <% unless @categories.nil? %>
+    <% if @categories.present? %>
       <%= form.collection_select(
         :category_id,
         @categories,
