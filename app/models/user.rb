@@ -8,8 +8,6 @@ class User < ActiveRecord::Base
     is_owner?(object)
   end
 
-  private
-
   def is_owner?(object)
     object.user_id == id
   end

@@ -9,13 +9,15 @@
     <%= form.text_area :body %>
   </div>
   <div>
-    <%= form.collection_select(
-      :category_id,
-      @categories,
-      :id,
-      :title,
-      include_blank: "Choose a Category"
-    ) %>
+    <% unless @categories.nil? %>
+      <%= form.collection_select(
+        :category_id,
+        @categories,
+        :id,
+        :title,
+        include_blank: "Choose a Category"
+      ) %>
+  <% end %>
   </div>
   <div>
     <%= form.submit %>

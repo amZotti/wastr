@@ -29,9 +29,9 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     if current_user.allowed_to_modify?(post)
       post.destroy
-      redirect_to :posts
+      redirect_to root_path
     else
-      redirect_to :posts
+      render :post 
     end
   end
 

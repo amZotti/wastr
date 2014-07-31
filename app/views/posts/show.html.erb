@@ -2,6 +2,11 @@
   <%= render @post %>
 </div>
 <div>
+  <% if current_user.is_owner?(@post)  %>
+    <%= link_to "Delete Post", @post, method: :delete %>
+  <% end %>
+</div>
+<div>
   <strong>Category:</strong> <%= @category.name %> 
 </div>
 
