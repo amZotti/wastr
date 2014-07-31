@@ -16,6 +16,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @comments = @user.comments.chronological
+    @reply = Comment.new
+  end
+
   private
 
   def user_params

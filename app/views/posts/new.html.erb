@@ -1,23 +1,30 @@
-<%= form_for @post do |form| %>
+<% if @categories.empty? %>
   <div>
-    <%= form.label :title, "Post title: " %>
-    <%= form.text_field :title %>
+    <h3>Before you can create a post you need to create a category.</h3>
+    <%= link_to "Create a category", [:new, :category] %>
   </div>
-  <div>
-    <%= form.label :body, "Post Body: " %>
-    <%= form.text_area :body %>
-  </div>
-  <div>
-    <%= form.label "Choose a Category" %>
-    <%= form.collection_select(
-      :category_id,
-      @categories,
-      :id,
-      :title,
-      include_blank: "choose"
-    ) %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
+<% else %>
+  <%= form_for @post do |form| %>
+    <div>
+      <%= form.label :title, "Post title: " %>
+      <%= form.text_field :title %>
+    </div>
+    <div>
+      <%= form.label :body, "Post Body: " %>
+      <%= form.text_area :body %>
+    </div>
+    <div>
+      <%= form.label "Choose a Category" %>
+        <%= form.collection_select(
+          :category_id,
+          @categories,
+          :id,
+          :title,
+          include_blank: "choose"
+        ) %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>
