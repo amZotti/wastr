@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     category = Category.find(params[:id])
-    if current_user.allowed_to_modify?(category)
+    if current_user.allowed_to_delete?(category)
       category.destroy
       redirect_to :posts
     else
