@@ -11,7 +11,7 @@
     <% if signed_in? %>
       Signed in as: <%= current_user.email %>
       <%= link_to "Sign Out", :session, method: :delete %>
-      <%= link_to "My Comments", current_user %>
+      <%= link_to "My Activity", current_user %>
     <% else %>
       <%= link_to "Login", [:new, :session] %>
       <%= link_to "Sign Up", [:new, :user] %>
