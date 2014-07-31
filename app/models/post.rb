@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
   validates :body, presence: true
   validates :category, presence: true
 
+  delegate :email, to: :user
   def score
     votes.sum("value")
   end
