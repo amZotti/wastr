@@ -22,11 +22,7 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if current_user.allowed_to_modify?(@category)
-      if @category.update(category_params)
-        redirect_to @category
-      else
-        render :edit
-      end
+      update_category(@category)
     else
       redirect_to :posts
     end
@@ -52,5 +48,13 @@ class CategoriesController < ApplicationController
       :message,
       :intro,
     )
+  end
+
+  def update_category(category)
+    if category.update(category_params)
+      redirect_to @category
+    else
+      render :edit
+    end
   end
 end
