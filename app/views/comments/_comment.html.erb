@@ -1,18 +1,18 @@
 <li>
-  <a id="<%= dom_id(comment) %>">
+  <div id="<%= dom_id(comment) %>">
+    Posted by: <%= link_to comment.email, comment.user %> <span><%= link_to "Permalink", [comment.post, comment] %></span>
+    <div><%= comment.body %></div>
+
+    <%= link_to "Reply", "#", class: "comment-reply-link", "data-comment-selector" => dom_id(comment) %>
+
+    <%= form_for [comment, reply], url: [comment, :comments], html: { class: "comment-reply-form", "data-comment-selector"  => dom_id(comment) } do |form| %>
+      <div><%= form.label :body, "reply to this comment: " %></div>
+      <div><%= form.text_area :body %></div>
+      <div><%= form.submit "reply" %></div>
+    <% end %>
+
     <div>
-      Posted by: <%= link_to comment.email, comment.user %> <span><%= link_to "Permalink", [comment.post, comment] %></span>
-      <div><%= comment.body %></div>
-      <div>
-        <%= form_for [comment, reply], url: [comment, :comments], html: { class: "whatever" } do |form| %>
-          <div><%= form.label :body, "reply to this comment: " %></div>
-          <div><%= form.text_area :body %></div>
-          <div><%= form.submit "reply" %></div>
-        <% end %>
-      </div>
-      <div>
-        <ul id="<%= dom_id(comment) %>"><%= render comment.replies, reply: reply %></ul>
-      </div>
+      <ul><%= render comment.replies, reply: reply %></ul>
     </div>
-  </a>
+  </div>
 </li>
