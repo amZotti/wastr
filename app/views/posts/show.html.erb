@@ -7,12 +7,14 @@
 
 <h3>Comments</h3>
 
-<div>
-  <%= form_for [@post, @reply], url: [@post, :comments] do |form| %>
+<%= link_to "Reply to this post", "#", class: "post-reply-link" %>
+
+<div class="post-reply-form">
+  <%= form_for [@post, @reply], url: [@post, :comments], html: { id: "post-reply-form" } do |form| %>
     <div><%= form.label :body, "enter your comment:" %></div>
     <div><%= form.text_area :body %></div>
     <div><%= form.submit %></div>
   <% end %>
 </div>
 
-<%= render @post.replies, reply: @reply %>
+<ul id="post-reply-list"><%= render @post.replies.chronological, reply: @reply %></ul>

@@ -1,4 +1,4 @@
-<div>
+<li>
   <b>Title: </b><%= link_to post.title, post %>
   <%= button_to "Upvote", [post, :upvote] %>
   <%= button_to "Downvote", [post, :downvote] %>
@@ -9,4 +9,4 @@
 </div>
 <div>
   Posted by: <%= link_to post.email, post.user %>
-</div>
+</li>

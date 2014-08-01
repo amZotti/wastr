@@ -4,14 +4,14 @@
       Posted by: <%= link_to comment.email, comment.user %> <span><%= link_to "Permalink", [comment.post, comment] %></span>
       <div><%= comment.body %></div>
       <div>
-        <%= form_for [comment, reply], url: [comment, :comments] do |form| %>
+        <%= form_for [comment, reply], url: [comment, :comments], html: { class: "whatever" } do |form| %>
           <div><%= form.label :body, "reply to this comment: " %></div>
           <div><%= form.text_area :body %></div>
           <div><%= form.submit "reply" %></div>
         <% end %>
       </div>
       <div>
-        <ul><%= render comment.replies, reply: reply %></ul>
+        <ul id="<%= dom_id(comment) %>"><%= render comment.replies, reply: reply %></ul>
       </div>
     </div>
   </a>
