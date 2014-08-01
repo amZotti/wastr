@@ -1,4 +1,17 @@
 <h2>Posts</h2>
 <div><%= link_to "New Post", [:new, :post] %></div>
 <div><%= link_to "New Category", [:new, :category] %></div>
-<div><%= render @posts %></div>
+
+<div id="post-list">
+  <table>
+  <thead>
+    <th>Vote</th>
+    <th class="sort" data-sort="score">Sort by Score</th>
+    <th class="sort" data-sort="title">Sort by Title</th>
+    <th>Post</th>
+  </thead>
+  <tbody class="list">
+    <div><%= render @posts %></div>
+  </ul>
+  </tbody>
+</div>

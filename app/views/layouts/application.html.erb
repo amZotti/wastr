@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Wastr</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <nav>
-    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= link_to "Sign Out", :session, method: :delete %>
-      <%= link_to "My Activity", current_user %>
-    <% else %>
-      <%= link_to "Login", [:new, :session] %>
-      <%= link_to "Sign Up", [:new, :user] %>
-    <% end %>
-  </nav>
+  <head>
+    <title>Wastr</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav>
+      <% if signed_in? %>
+        Signed in as: <%= current_user.email %>
+        <%= link_to "Sign Out", :session, method: :delete %>
+        <%= link_to "My Activity", current_user %>
+      <% else %>
+        <%= link_to "Login", [:new, :session] %>
+        <%= link_to "Sign Up", [:new, :user] %>
+      <% end %>
+    </nav>
 
-  <%= yield %>
-
-</body>
+    <%= yield %>
+  </body>
 </html>

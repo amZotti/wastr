@@ -1,12 +1,8 @@
-<div>
-  <b>Title: </b><%= link_to post.title, post %>
-  <%= render "upvote", post: post %>
-  <%= render "downvote", post: post %>
-  <p id="score_<%= post.id %>">Score: <%= post.score %></p>
-</div>
-<div>
-  <b>Body:</b> <%= post.body %>
-</div>
-<div>
-  Posted by: <%= link_to post.email, post.user %>
-</div>
+<tr>
+  <td><%= render "upvote", post: post %><%= render "downvote", post: post %></td>
+  <td class = "score"><span id="score_<%= post.id %>"><%= post.score %></span></td>
+  <td class= "title"><%= post.title %></td>
+  <td><%= post.body %>
+    Posted by: <%= link_to post.email, post.user %>
+  </td>
+</tr>
