@@ -1,8 +1,10 @@
-<tr>
-  <td><%= render "upvote", post: post %><%= render "downvote", post: post %></td>
-  <span id="score_<%= post.id %>"><td class="score"><%= post.score %></td></span>
-  <td class="title"><%= post.title %></td>
-  <td><%= post.body %>
-    Posted by: <%= link_to post.email, post.user %>
-  </td>
-</tr>
+<div class="post_blob">
+  <h3 class="title"><%= post.title %></h3> <%= link_to "permalink", post %>
+  <div><%= post.body %></div>
+  <div>Posted by: <%= link_to post.email, post.user %></div>
+  <%= render "upvote", post: post %>
+  <div id="score_<%= post.id %>">
+    <span class="score"><%= post.score %></span>
+  </div> 
+  <%= render "downvote", post: post %>
+</div>

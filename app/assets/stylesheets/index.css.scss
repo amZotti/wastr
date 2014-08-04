@@ -1,6 +1,45 @@
-.post_index_title{
-  line-height: 45pt;
+@import url(http://fonts.googleapis.com/css?family=Averia+Serif+Libre:700);
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+
+h2{
+  line-height: 35pt;
+  color: dark_grey;
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 1.5em;
+}
+
+h3{
+  line-height: 15pt;
   color: grey;
-  font-family: arial;
-  font-size: 1.25em;
+  font-family: 'Averia Serif Libre', cursive;
+}
+
+a{
+  color: blue;
+  font-family: 'Averia Serif Libre', cursive;
+  text-decoration: none;
+}
+
+body{
+  font-family: 'Varela Round', sans-serif;
+}
+
+.post_blob{
+  background-color: rgba(244, 244, 244, 0.7);
+}
+
+div.upvote_button input{
+  background: image-url("Arrow-Up-green-48.png") no-repeat;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border: none;
+}
+
+div.downvote_button input{
+  background: image-url("Arrow-Down-red-48.png") no-repeat;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border: none;
 }
